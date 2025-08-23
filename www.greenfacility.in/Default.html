@@ -73,6 +73,35 @@
         }
     </style>
 
+    <style>
+        /* Preloader styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* change background if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.preloader-logo img {
+    width: 120px; /* adjust size */
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+        </style>
+
 
 
     
@@ -80,6 +109,14 @@
     <link rel="stylesheet" href="../cdn.jsdelivr.net/npm/swiper%4011/swiper-bundle.min.css" />
 </head>
 <body>
+
+    <!-- Preloader -->
+<div id="preloader">
+    <div class="preloader-logo">
+        <img src="images/green_logo.jpg" alt="Green Facility Logo">
+    </div>
+</div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LDFJVN"
@@ -99,6 +136,14 @@ Remarketing tags may not be associated with personally identifiable information 
     </script>
     <script type="text/javascript" src="../www.googleadservices.com/pagead/f.txt">
     </script>
+    <script>
+    // Hide preloader after 3 seconds
+    window.addEventListener("load", function() {
+        setTimeout(function(){
+            document.getElementById("preloader").style.display = "none";
+        }, 3000);
+    });
+</script>
     <noscript>
         <div style="display: inline;">
             <img height="1" width="1" style="border-style: none;" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/942907106/?guid=ON&amp;script=0" />
@@ -213,77 +258,89 @@ Remarketing tags may not be associated with personally identifiable information 
         <section class="sec-1">
             <div class="container">
     <div class="flex-2 sec-1-flex-2">
-        <div class="text-div">
-            <h1 class="hero-title">
-                <span class="hero-title-span with-bg">Green Facility</span>
-                Solutions for
-                <span class="hero-title-span">Corporate, Schools & Colleges</span>
-            </h1>
+  <div class="text-div">
+    <h1 class="hero-title">
+      <span class="hero-title-span with-bg">Green Facility</span>
+      Solutions for
+      <span class="hero-title-span">Corporate, Schools & Colleges</span>
+    </h1>
 
-            <p class="hero-p">
-                Green Facility offers professional housekeeping solutions tailored for workplaces and institutions. 
-                From corporate offices to schools and colleges, we deliver trained manpower, eco-friendly practices, 
-                and systematic supervision—ensuring clean, safe, and welcoming environments every day.
-            </p>
+    <p class="hero-p">
+      Green Facility delivers SOP-driven housekeeping for workplaces and institutions. From corporate offices to schools and colleges, we provide trained, verified teams and systematic supervision—keeping environments clean, safe, and welcoming every day.
+    </p>
 
-            <a href="contact-us.html" class="button-default b-btn">Book a Service <i
-                class="fa-regular fa-comments" style="color: #ffffff;"></i></a>
-
-            <div class="count-div">
-                <div class="count-deck">
-                    <h2 data-count="1500" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
-                    <h4>Total Clients</h4>
-                </div>
-                <div class="count-deck">
-                    <h2 data-count="100" data-suffix="%" class="count">0<span class="suffix">%</span></h2>
-                    <h4>Client Satisfaction</h4>
-                </div>
-                <div class="count-deck">
-                    <h2 data-count="200" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
-                    <h4>Trained Team Members</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="photo-div sec-1-photo-div">
-            <div class="photo-div-deck">
-                <div class="photo-deck">
-                    <img style="border-radius: 10px;" src=https://images.unsplash.com/photo-1742483359033-13315b247c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvbWUlMjBjbGVhbmluZyUyMHNlcnZpY2V8ZW58MHwxfDB8fHwy" />
-                </div>
-
-                <div class="ver-div">
-                    <div class="ver-div-inner-deck-h1">
-                        <h1>12+ Years</h1>
-                        <a href="about.html">
-                            <img src="images/icons/right.png" />
-                        </a>
-                    </div>
-                    <div class="ver-div-inner-deck">
-                        <h4>Trusted by leading<br />
-                            corporates & institutions
-                        </h4>
-
-                        <div class="client-mini-photo-div">
-                            <img style="margin-right: -20px;" src="images/clients/avatar-1.jpg" />
-                            <img style="margin-right: -20px;" src="images/clients/avatar-2.jpg" />
-                            <img src="images/clients/avatar-3.jpg" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="photo-div-deck">
-                <div class="ex-div">
-                    <div class="ex-img">
-                        <img src="images/icons/eco-home.png" />
-                    </div>
-
-                    <h4>Book a free site<br />
-                        assessment today!</h4>
-                </div>
-                <img class="ddjj" style="border-radius: 10px;" src="images/Team/13.jpg" />
-            </div>
-        </div>
+    <!-- CTAs -->
+    <div class="hero-ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px;">
+      <a href="contact-us.html#site-visit" class="button-default b-btn" aria-label="Book a site visit">
+        Book a Site Visit
+        <i class="fa-regular fa-comments" style="color:#ffffff;"></i>
+      </a>
+      <a
+        class="button-outline"
+        href="https://wa.me/919920453384?text=Hi%20Green%20Facility,%20I%27d%20like%20a%20site%20visit."
+        target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+        style="padding:12px 18px;border:1px solid #0bbf54;border-radius:8px;text-decoration:none;font-weight:600;color:#0bbf54;background:#fff;">
+        WhatsApp
+      </a>
     </div>
+
+    <div class="count-div">
+      <div class="count-deck">
+        <h2 data-count="1500" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
+        <h4>Total Clients</h4>
+      </div>
+      <div class="count-deck">
+        <h2 data-count="100" data-suffix="%" class="count">0<span class="suffix">%</span></h2>
+        <h4>Client Satisfaction</h4>
+      </div>
+      <div class="count-deck">
+        <h2 data-count="200" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
+        <h4>Trained Team Members</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="photo-div sec-1-photo-div">
+    <div class="photo-div-deck">
+      <div class="photo-deck">
+        <!-- Fixed missing opening quote + added alt -->
+        <img style="border-radius: 10px;"
+             src="https://images.unsplash.com/photo-1742483359033-13315b247c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvbWUlMjBjbGVhbmluZyUyMHNlcnZpY2V8ZW58MHwxfDB8fHwy"
+             alt="Professional housekeeping team at work" />
+      </div>
+
+      <div class="ver-div">
+        <div class="ver-div-inner-deck-h1">
+          <h1>12+ Years</h1>
+          <a href="about.html" aria-label="Learn more about Green Facility">
+            <img src="images/icons/right.png" alt="Arrow icon" />
+          </a>
+        </div>
+        <div class="ver-div-inner-deck">
+          <h4>Trusted by leading<br />corporates & institutions</h4>
+
+          <div class="client-mini-photo-div">
+            <img style="margin-right:-20px;" src="images/clients/avatar-1.jpg" alt="Client avatar 1" loading="lazy" />
+            <img style="margin-right:-20px;" src="images/clients/avatar-2.jpg" alt="Client avatar 2" loading="lazy" />
+            <img src="images/clients/avatar-3.jpg" alt="Client avatar 3" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-div-deck">
+      <div class="ex-div">
+        <div class="ex-img">
+          <img src="images/icons/eco-home.png" alt="Eco-friendly icon" />
+        </div>
+
+        <h4>Book a free site<br />assessment today!</h4>
+      </div>
+      <img class="ddjj" style="border-radius: 10px;" src="images/Team/13.jpg" alt="Green Facility team at a site" loading="lazy" />
+    </div>
+  </div>
+</div>
+
 </div>
 
         </section>
