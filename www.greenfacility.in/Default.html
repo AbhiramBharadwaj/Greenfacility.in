@@ -102,6 +102,102 @@
 
         </style>
 
+        <style>
+
+            /* --- HERO --- */
+.hero--bg{
+  position:relative; isolation:isolate; min-height:78vh; display:flex; align-items:center;
+  background: #0f2017; /* fallback while image loads */
+  background-image: url('images/hero/cleaning-team.jpg'); /* replace with your best image */
+  background-size: cover; background-position: center;
+}
+.hero__overlay{
+  position:absolute; inset:0;
+  background: radial-gradient(1200px 600px at 15% 20%, rgba(5,40,20,.65), transparent 60%),
+              linear-gradient( to right, rgba(7,30,18,.85), rgba(7,30,18,.35) 55%, transparent);
+}
+.hero__grid{ position:relative; display:grid; gap:40px; grid-template-columns: 1.2fr .8fr; padding:80px 0; }
+@media (max-width: 980px){ .hero__grid{ grid-template-columns:1fr; padding:56px 0; } }
+
+.hero__title{ color:#fff; font-weight:800; line-height:1.05; font-size:clamp(28px, 4vw, 48px); margin:0 0 12px; }
+.hero__title span{ display:block; font-weight:600; opacity:.85; font-size:.62em; margin-top:6px; }
+.hero__lead{ color:#e9f6ee; max-width:60ch; margin:0 0 20px; }
+
+.hero__ctas{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px; }
+.btn{ display:inline-block; padding:12px 18px; border-radius:10px; font-weight:700; text-decoration:none; }
+.btn--primary{ background:#0bbf54; color:#fff; }
+.btn--primary:hover{ filter:brightness(.95); }
+.btn--whatsapp{ border:1.5px solid #0bbf54; color:#0bbf54; background:#fff; }
+.btn--whatsapp:hover{ background:#f4fff8; }
+
+.hero__stats{ list-style:none; display:flex; gap:24px; padding:0; margin:16px 0 0; color:#e9f6ee; flex-wrap:wrap; }
+.hero__stats strong{ display:block; font-size:clamp(18px, 3.2vw, 28px); color:#fff; }
+
+.hero__card{
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:16px; padding:22px; color:#fff;
+}
+.hero__card h3{ margin:0 0 8px; font-weight:800; }
+.hero__card label{ display:block; font-size:12px; opacity:.9; margin:10px 0 6px; }
+.hero__card input{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.15); color:#fff;
+}
+.hero__card input::placeholder{ color:#f2fff7; opacity:.7; }
+.hero__card button{ width:100%; margin-top:12px; }
+.hero__card small{ display:block; margin-top:8px; opacity:.85; }
+.hero__card a{ color:#fff; text-decoration:underline; }
+
+/* Minimal 2-card testimonials */
+.t-grid{
+  display:grid;
+  gap:26px;
+  grid-template-columns:1fr;
+  max-width:980px;
+  margin:0 auto;
+}
+@media (min-width: 900px){
+  .t-grid{ grid-template-columns:1fr 1fr; }
+}
+
+.t-card{
+  background:#fff;
+  border:1px solid #e8efe9;
+  border-radius:16px;
+  padding:22px 22px 18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+  position:relative;
+}
+.t-card::before{
+  content:"";
+  position:absolute; left:0; top:16px; bottom:16px; width:4px;
+  background:#0bbf54; border-radius:4px;
+  opacity:.9;
+}
+.t-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 14px 34px rgba(0,0,0,.07);
+}
+
+.t-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.t-quote{
+  font-size:28px; line-height:1; color:#0bbf54; font-weight:900;
+}
+.t-head h3{ margin:0; font-size:18px; font-weight:800; color:#0c3520; }
+
+.t-text{ margin:6px 0 16px; color:#374; line-height:1.65; }
+
+.t-foot{ display:flex; align-items:center; gap:12px; }
+.t-avatar{ width:40px; height:40px; border-radius:50%; }
+.t-meta strong{ display:block; font-size:14px; color:#0c3520; }
+.t-g{ display:block; width:84px; height:auto; margin-top:2px; }
+
+
+            </style>
+
 
 
     
@@ -254,96 +350,128 @@ Remarketing tags may not be associated with personally identifiable information 
 
 
     
-    <div class="home-page-main-div">
-        <section class="sec-1">
-            <div class="container">
-    <div class="flex-2 sec-1-flex-2">
-  <div class="text-div">
-    <h1 class="hero-title">
-      <span class="hero-title-span with-bg">Green Facility</span>
-      Solutions for
-      <span class="hero-title-span">Corporate, Schools & Colleges</span>
-    </h1>
+  <!-- ======= HERO: background video + overlay + enquiry form (fixed) ======= -->
+<style>
+  /* minimal helpers so your existing CSS keeps working */
+  .hero { position: relative; overflow: hidden; min-height: 82vh; display: flex; align-items: center; }
+  .hero__video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;                /* keep >= 0 so it’s not behind the page */
+    background: #000;          /* prevents white flash before poster/video */
+  }
+  .hero__overlay { position: absolute; inset: 0; background: rgba(0,0,0,.45); z-index: 1; }
+  .hero__content { position: relative; z-index: 2; }
+  @media (max-width: 980px){
+    .hero .sec-1-flex-2 { gap: 18px !important; }
+    .hero .hero-form { order: -1; } /* show form first on mobile */
+  }
+</style>
 
-    <p class="hero-p">
-      Green Facility delivers SOP-driven housekeeping for workplaces and institutions. From corporate offices to schools and colleges, we provide trained, verified teams and systematic supervision—keeping environments clean, safe, and welcoming every day.
-    </p>
+<div class="home-page-main-div">
+  <section class="sec-1 hero"
+           style="background:#0f2017 url('images/hero/cleaning-team.jpg') center/cover no-repeat;">
+    <!-- Background video -->
+    <video class="hero__video" autoplay muted loop playsinline webkit-playsinline preload="auto"
+           poster="images/service-img/1.png">
+      <!-- Add WebM if you have it for broader support -->
+      <!-- <source src="images/sweepingvideo.webm" type="video/webm"> -->
+      <source src="images/service-img/sweepingvideo.mp4" type="video/mp4">
+      Your browser does not support background video.
+    </video>
 
-    <!-- CTAs -->
-    <div class="hero-ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px;">
-      <a href="contact-us.html#site-visit" class="button-default b-btn" aria-label="Book a site visit">
-        Book a Site Visit
-        <i class="fa-regular fa-comments" style="color:#ffffff;"></i>
-      </a>
-      <a
-        class="button-outline"
-        href="https://wa.me/919920453384?text=Hi%20Green%20Facility,%20I%27d%20like%20a%20site%20visit."
-        target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
-        style="padding:12px 18px;border:1px solid #0bbf54;border-radius:8px;text-decoration:none;font-weight:600;color:#0bbf54;background:#fff;">
-        WhatsApp
-      </a>
-    </div>
+    <!-- Soft overlay for readability -->
+    <div class="hero__overlay" aria-hidden="true"></div>
 
-    <div class="count-div">
-      <div class="count-deck">
-        <h2 data-count="1500" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
-        <h4>Total Clients</h4>
-      </div>
-      <div class="count-deck">
-        <h2 data-count="100" data-suffix="%" class="count">0<span class="suffix">%</span></h2>
-        <h4>Client Satisfaction</h4>
-      </div>
-      <div class="count-deck">
-        <h2 data-count="200" data-suffix="+" class="count">0<span class="suffix">+</span></h2>
-        <h4>Trained Team Members</h4>
-      </div>
-    </div>
-  </div>
+    <!-- Content -->
+    <div class="container hero__content">
+      <div class="flex-2 sec-1-flex-2" style="align-items:center;gap:32px;">
+        <!-- LEFT: Headline + copy + CTAs -->
+        <div class="text-div" style="color:#fff;max-width:720px;">
+          <h1 class="hero-title" style="margin:0 0 10px;">
+            <span class="hero-title-span with-bg">Green Facility</span><br>
+            Reliable cleaning services for  <span class="hero-title-span">• Corporate • Schools • Colleges</span>
+          </h1>
 
-  <div class="photo-div sec-1-photo-div">
-    <div class="photo-div-deck">
-      <div class="photo-deck">
-        <!-- Fixed missing opening quote + added alt -->
-        <img style="border-radius: 10px;"
-             src="https://images.unsplash.com/photo-1742483359033-13315b247c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGhvbWUlMjBjbGVhbmluZyUyMHNlcnZpY2V8ZW58MHwxfDB8fHwy"
-             alt="Professional housekeeping team at work" />
-      </div>
+          <p class="hero-p" style="color:#f2f6f3;max-width:60ch;">
+            Trained teams with SOPs, on-site supervision, and audit-ready reporting—delivered consistently, every day.
+          </p>
 
-      <div class="ver-div">
-        <div class="ver-div-inner-deck-h1">
-          <h1>12+ Years</h1>
-          <a href="about.html" aria-label="Learn more about Green Facility">
-            <img src="images/icons/right.png" alt="Arrow icon" />
-          </a>
-        </div>
-        <div class="ver-div-inner-deck">
-          <h4>Trusted by leading<br />corporates & institutions</h4>
-
-          <div class="client-mini-photo-div">
-            <img style="margin-right:-20px;" src="images/clients/avatar-1.jpg" alt="Client avatar 1" loading="lazy" />
-            <img style="margin-right:-20px;" src="images/clients/avatar-2.jpg" alt="Client avatar 2" loading="lazy" />
-            <img src="images/clients/avatar-3.jpg" alt="Client avatar 3" loading="lazy" />
+          <div class="hero-ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0;">
+            <a href="contact-us.html#site-visit" class="button-default b-btn" aria-label="Book a site visit">
+              Book a Site Visit
+              <i class="fa-regular fa-comments" style="color:#ffffff;"></i>
+            </a>
+            <a class="button-outline"
+               href="https://wa.me/919920453384?text=Hi%20Green%20Facility,%20I%27d%20like%20a%20site%20visit."
+               target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+               style="padding:12px 18px;border:1.5px solid #0bbf54;border-radius:10px;text-decoration:none;font-weight:700;color:#0bbf54;background:#fff;">
+              WhatsApp
+            </a>
           </div>
+
+          <!-- Quick proof badges -->
+          <ul style="display:flex;gap:12px;flex-wrap:wrap;margin:8px 0 0;padding:0;list-style:none;">
+            <li style="background:#ffffffd9;color:#0c3520;border-radius:10px;padding:6px 12px;font-weight:700;">ISO 9001</li>
+            <li style="background:#ffffffd9;color:#0c3520;border-radius:10px;padding:6px 12px;font-weight:700;">12+ Years</li>
+            <li style="background:#ffffffd9;color:#0c3520;border-radius:10px;padding:6px 12px;font-weight:700;">1500+ Clients</li>
+          </ul>
         </div>
+
+        <!-- RIGHT: Enquiry Form -->
+        <aside class="hero-form" aria-label="Quick enquiry form"
+               style="width:100%;max-width:360px;background:#fff;border-radius:16px;
+                      padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.18);border:1px solid #e8efe9;">
+          <h3 style="margin:0 0 6px;color:#0c3520;">Get a Free Quote</h3>
+          <p style="margin:0 0 12px;color:#355;font-size:14px;">Tell us a few details and we’ll call you back.</p>
+
+          <form action="contact-us.html#site-visit" method="get" novalidate>
+            <label for="q-name" style="display:block;font-size:12px;color:#355;margin:10px 0 6px;">Your Name</label>
+            <input id="q-name" name="name" type="text" required
+                   placeholder="e.g., Ananya Sharma"
+                   style="width:100%;padding:12px;border:1px solid #dfe7e2;border-radius:10px;">
+
+            <label for="q-phone" style="display:block;font-size:12px;color:#355;margin:10px 0 6px;">Phone</label>
+            <input id="q-phone" name="phone" type="tel" required
+                   placeholder="+91 …"
+                   style="width:100%;padding:12px;border:1px solid #dfe7e2;border-radius:10px;">
+
+            <label for="q-location" style="display:block;font-size:12px;color:#355;margin:10px 0 6px;">Location</label>
+            <input id="q-location" name="location" type="text" required
+                   placeholder="City / Area"
+                   style="width:100%;padding:12px;border:1px solid #dfe7e2;border-radius:10px;">
+
+            <label for="q-notes" style="display:block;font-size:12px;color:#355;margin:10px 0 6px;">Requirements (optional)</label>
+            <textarea id="q-notes" name="notes" rows="3"
+                      placeholder="Office size, shifts, frequency…"
+                      style="width:100%;padding:12px;border:1px solid #dfe7e2;border-radius:10px;"></textarea>
+
+            <button type="submit" class="button-default b-btn" style="width:100%;margin-top:12px;">
+              Request Callback
+            </button>
+            <small style="display:block;margin-top:8px;color:#678;">
+              Or call <a href="tel:+919920453384" style="color:#0bbf54;font-weight:700;">+91 99204 53384</a>
+            </small>
+          </form>
+        </aside>
       </div>
     </div>
-
-    <div class="photo-div-deck">
-      <div class="ex-div">
-        <div class="ex-img">
-          <img src="images/icons/eco-home.png" alt="Eco-friendly icon" />
-        </div>
-
-        <h4>Book a free site<br />assessment today!</h4>
-      </div>
-      <img class="ddjj" style="border-radius: 10px;" src="images/Team/13.jpg" alt="Green Facility team at a site" loading="lazy" />
-    </div>
-  </div>
+  </section>
 </div>
 
-</div>
+<!-- tiny helper to ensure autoplay kicks in when allowed -->
+<script>
+  window.addEventListener('load', function () {
+    var v = document.querySelector('.hero__video');
+    if (v && v.play) {
+      var p = v.play();
+      if (p && p.catch) { p.catch(function(){ /* ignore gesture-gated cases */ }); }
+    }
+  });
+</script>
 
-        </section>
+
 
         <!------------------------------------------------------------------------------------------------------------>
 
@@ -552,171 +680,56 @@ Remarketing tags may not be associated with personally identifiable information 
         <!--------   Testimonial ❤ -------------->
 
         <section class="sec-4">
-            <div class="container">
-                <div class="tetstimonial-main-div">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span class="btn-title">Testimonials</span>
+      <h2 style="font-weight:800; margin:8px 0 6px;">What Our Clients Say</h2>
+      <p style="max-width:640px; margin:0 auto; color:#576; font-size:14px;">
+        A few words from our happy clients who trust Green Facility.
+      </p>
+    </div>
+
+    <div class="t-grid">
+      <!-- Card 1 -->
+      <article class="t-card">
+        <header class="t-head">
+          <span class="t-quote">“</span>
+          <h3>Great Services</h3>
+        </header>
+        <p class="t-text">
+          “We have great service from Green Facility… highly recommended.”
+        </p>
+        <footer class="t-foot">
+          <img class="t-avatar" src="images/icons/profile-user.png" alt="Client avatar">
+          <div class="t-meta">
+            <strong>Rahima Siddiqui</strong>
+            <img class="t-g" src="images/Google-Review-Logo.png" alt="Google review">
+          </div>
+        </footer>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="t-card">
+        <header class="t-head">
+          <span class="t-quote">“</span>
+          <h3>Nice Staff Response</h3>
+        </header>
+        <p class="t-text">
+          “Good service and good staff response.”
+        </p>
+        <footer class="t-foot">
+          <img class="t-avatar" src="images/icons/profile-user.png" alt="Client avatar">
+          <div class="t-meta">
+            <strong>Shubham Kamble</strong>
+            <img class="t-g" src="images/Google-Review-Logo.png" alt="Google review">
+          </div>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
 
 
-                    <div class="testimonial-title-div">
-                        <div class="tst-title">
-                            <h4 class="btn-title">Testimonial</h4>
-                            <h2>What Our <span>Clients</span>
-                                <br>
-                                <span>Say</span> About Us</h2>
-                            <br>
-                            <p>
-                                Here's what some of our valued clients have to say about their experience with Green
-                                Facility.
-                            </p>
-                        </div>
-                        <div class="tst-swiper-btn">
-                            <div class="testimonial-slide-arrow-left">Pre</div>
-                            <div class="testimonial-slide-arrow-right">Nxt</div>
-                        </div>
-
-                    </div>
-
-
-
-
-
-                    <div class="testimonial-swiper-div">
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-
-
-                                <div class="swiper-slide pop-img">
-                                    <div class="tst-swiper-inner-deck">
-                                        <h2>“Great Services”</h2>
-                                        <p>
-                                            "We have great service from green facility services.... highly recommended."
-                                        </p>
-
-                                        <div class="clienr-name-div">
-                                            <div class="client-ph">
-                                                <img src="images/icons/profile-user.png" />
-                                            </div>
-
-                                            <div class="client-nm">
-                                                <h3>Rahima Siddiqui</h3>
-                                                
-                                            </div>
-
-                                            <div class="g-review">
-                                                <img src="images/Google-Review-Logo.png" />
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--------------->
-
-
-                                <div class="swiper-slide pop-img">
-                                    <div class="tst-swiper-inner-deck">
-                                        <h2>“Nice Staff Response”</h2>
-                                        <p>
-                                            "Good service and good staff response"
-                                        </p>
-
-                                        <div class="clienr-name-div">
-                                            <div class="client-ph">
-                                                <img src="images/icons/profile-user.png" />
-
-                                            </div>
-                                            <div class="client-nm">
-                                                <h3>Shubham Kamble</h3>
-                                                
-                                            </div>
-
-                                            <div class="g-review">
-                                                <img src="images/Google-Review-Logo.png" />
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--------------->
-
-
-                                <div class="swiper-slide pop-img">
-                                    <div class="tst-swiper-inner-deck">
-                                        <h2>“Good Experience”</h2>
-                                        <p>
-                                            "Best classes in Santacruz. The teaching is amazing and also in a funway.
-                                            Studies dont look like studies but at the end we gain valuable knowledge."
-                                        </p>
-
-                                        <div class="clienr-name-div">
-                                            <div class="client-ph">
-                                                <img src="images/icons/profile-user.png" />
-
-                                            </div>
-                                            <div class="client-nm">
-                                                <h3>Hasan Kothawala</h3>
-                                                
-                                            </div>
-
-
-                                            <div class="g-review">
-                                                <img src="images/Google-Review-Logo.png" />
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--------------->
-
-
-                                <div class="swiper-slide pop-img">
-                                    <div class="tst-swiper-inner-deck">
-                                        <h2>“Keep Us Updated”</h2>
-                                        <p>
-                                            "The staff is very co operative and nice. In case of the rare issue that
-                                            crops up, the company reps take the initiative and keep us updated on the
-                                            issue as well as the remedies for the same ! Looking forward to many years
-                                            of business with them."
-                                        </p>
-
-                                        <div class="clienr-name-div">
-                                            <div class="client-ph">
-                                                <img src="images/icons/profile-user.png" />
-
-                                            </div>
-
-                                            <div class="client-nm">
-                                                <h3>sonia a</h3>
-                                                
-                                            </div>
-
-                                            <div class="g-review">
-                                                <img src="images/Google-Review-Logo.png" />
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--------------->
-                            </div>
-                        </div>
-                        <div class="tst-swiper-btn fr-desktop-btnM testimonial-btn-800 ">
-                            <div class="testimonial-slide-arrow-left">
-                                <img src="images/icons/left-arrow.png" />
-                            </div>
-                            <div class="testimonial-slide-arrow-right">
-                                <img src="images/icons/arrow-right.png" />
-                            </div>
-                        </div>
-
-                        <div class="tst-swiper-btn testimonial-btn-800 fr-desktop-btn">
-                            <div class="testimonial-slide-arrow-left">Previous</div>
-                            <div class="testimonial-slide-arrow-right">Next</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- ------------------------------------------ Testimonial swiper end --------------------------- -->
 
 
@@ -862,7 +875,7 @@ Remarketing tags may not be associated with personally identifiable information 
             </div>
         </section>
 
-    </div>
+
 
 
 
